@@ -12,13 +12,25 @@
 
 let taskInput = document.getElementById("task-input");
 let addButton = document.getElementById("add-button");
-let tabs = document.querySelectorAll(".task-tabs div")
+let tabs = document.querySelectorAll(".task-tabs div");
+let underLine = document.getElementById("under-line");
+
 let taskList = [];
 let fileterList =[];
 let mode = 'all';
 
+tabs.forEach((menu) => 
+    menu.addEventListener("click", (e) => tabIndicator(e))
+);
+
 addButton.addEventListener("click", addTask);
 
+
+function tabIndicator (e){
+    underLine.style.left = e.currentTarget.offsetLeft + "px";
+    underLine.style.width = e.currentTarget.offsetWidth + "px";
+    underLine.style.top = e.currentTarget.offsetTop + e.currentTarget.offsetHeight+"px";
+}
 for(let i = 0; i< tabs.length; i++){
     tabs[i].addEventListener("click", function(event){
         filter(event);
